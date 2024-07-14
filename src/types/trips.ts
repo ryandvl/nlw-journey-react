@@ -23,3 +23,10 @@ export interface Activity {
   }[];
 }
 export type Activities = Activity[];
+
+export interface Link {
+  id: string;
+  title: string;
+  url: string;
+}
+export type Links = Link[];

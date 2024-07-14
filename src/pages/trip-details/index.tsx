@@ -8,24 +8,44 @@ import { DestinationAndDateHeader } from "./destination-and-date-header";
 import { Guests } from "./guests";
 import { ImportantLinks } from "./important-links";
 import { useParams } from "react-router-dom";
+import { CreateLinkModal } from "./create-link-modal";
+import { EditTripModal } from "./edit-trip-modal";
 
 export function TripDetailsPage() {
   const { tripId } = useParams();
 
   const [isCreateActivityModalOpen, setIsCreateActivityModalOpen] =
     useState(false);
+  const [isCreateLinkModalOpen, setIsCreateLinkModalOpen] = useState(false);
+  const [isEditTripModalOpen, setIsEditTripModalOpen] = useState(false);
 
   function openCreateActivityModal() {
     setIsCreateActivityModalOpen(true);
   }
-
   function closeCreateActivityModal() {
     setIsCreateActivityModalOpen(false);
   }
 
+  function openCreateLinkModal() {
+    setIsCreateLinkModalOpen(true);
+  }
+  function closeCreateLinkModal() {
+    setIsCreateLinkModalOpen(false);
+  }
+
+  function openEditTripModal() {
+    setIsEditTripModalOpen(true);
+  }
+  function closeEditTripModal() {
+    setIsEditTripModalOpen(false);
+  }
+
   return (
     <div className="max-w-6xl px-6 py-10 mx-auto space-y-8">
-      <DestinationAndDateHeader tripId={tripId} />
+      <DestinationAndDateHeader
+        tripId={tripId}
+        openEditTripModal={openEditTripModal}
+      />
 
       <main className="flex gap-16 px-4">
         <div className="flex-1 space-y-6">
@@ -43,12 +63,14 @@ export function TripDetailsPage() {
           <Activities tripId={tripId} />
         </div>
         <div className="w-80 space-y-6 ">
-          <ImportantLinks />
+          <ImportantLinks
+            tripId={tripId}
+            openCreateLinkModal={openCreateLinkModal}
+          />
 
           <div className="w-full h-px bg-zinc-800" />
 
           <Guests tripId={tripId} />
-          <div></div>
         </div>
       </main>
 
@@ -56,6 +78,18 @@ export function TripDetailsPage() {
         <CreateActivityModal
           tripId={tripId}
           closeCreateActivityModal={closeCreateActivityModal}
+        />
+      )}
+      {isCreateLinkModalOpen && (
+        <CreateLinkModal
+          tripId={tripId}
+          closeCreateLinkModal={closeCreateLinkModal}
+        />
+      )}
+      {isEditTripModalOpen && (
+        <EditTripModal
+          tripId={tripId}
+          closeEditTripModal={closeEditTripModal}
         />
       )}
     </div>

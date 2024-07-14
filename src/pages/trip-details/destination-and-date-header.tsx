@@ -9,10 +9,12 @@ import { Trip } from "../../types/trips";
 
 interface DestinationAndDateHeaderProps {
   tripId: string | undefined;
+  openEditTripModal: () => void;
 }
 
 export function DestinationAndDateHeader({
   tripId,
+  openEditTripModal,
 }: DestinationAndDateHeaderProps) {
   const [trip, setTrip] = useState<Trip | undefined>();
 
@@ -45,7 +47,7 @@ export function DestinationAndDateHeader({
 
         <div className="w-px h-6 bg-zinc-800" />
 
-        <Button variant="secondary">
+        <Button variant="secondary" onClick={openEditTripModal}>
           Alterar local/data
           <Settings2Icon size={20} />
         </Button>

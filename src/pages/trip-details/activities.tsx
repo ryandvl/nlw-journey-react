@@ -29,7 +29,8 @@ export function Activities({ tripId }: ActivitiesProps) {
         <div key={date} className="space-y-2.5">
           <div className="flex gap-2 items-baseline">
             <span className="text-xl text-zinc-300 font-semibold">
-              Dia {addZeroToSmallNumbers(format(date, "d"))}
+              {addZeroToSmallNumbers(format(date, "d"))}/
+              {addZeroToSmallNumbers(format(date, "M"))}
             </span>
             <span className="text-xs text-zinc-500">
               {capitalizeFirstLetter(format(date, "EEEE", { locale: ptBR }))}
@@ -51,7 +52,7 @@ export function Activities({ tripId }: ActivitiesProps) {
             </div>
           ) : (
             <p className="text-zinc-500 text-sm">
-              Todos convidados podem visualizar as atividades.
+              Nenhuma atividade cadastrada nessa data.
             </p>
           )}
         </div>

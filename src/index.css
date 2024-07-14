@@ -7,8 +7,8 @@
   --rdp-caption-font-size: 18px; /* Font size for the caption labels. */
   --rdp-accent-color: #bef264; /* Accent color for the background of selected days. */
   --rdp-background-color: #bef264; /* Background color for the hovered/focused elements. */
-  --rdp-accent-color-dark: #3003e1; /* Accent color for the background of selected days (to use in dark-mode). */
-  --rdp-background-color-dark: #180270; /* Background color for the hovered/focused elements (to use in dark-mode). */
+  --rdp-accent-color-dark: #bef264; /* Accent color for the background of selected days (to use in dark-mode). */
+  --rdp-background-color-dark: #bef264; /* Background color for the hovered/focused elements (to use in dark-mode). */
   --rdp-outline: 2px solid var(--rdp-accent-color); /* Outline border for focused elements */
   --rdp-outline-selected: 3px solid var(--rdp-accent-color); /* Outline border for focused _and_ selected elements */
   --rdp-selected-color: #1a2e05; /* Color of selected day text */
@@ -27,4 +27,22 @@
 
 input {
   color-scheme: dark;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3f3f46;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #71717a;
 }
